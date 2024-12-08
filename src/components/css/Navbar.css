@@ -3,3 +3,24 @@
   font-family: 'Bitter', sans-serif;
   font-size: 30px;
 }
+
+.small-nav-size {
+  font-size: 0.875rem; /* Adjust the font size as needed */
+  padding: 0.25rem 0.5rem; /* Adjust the padding as needed */
+}
+
+.small-nav-size .form-control {
+  height: calc(1.5em + 0.5rem + 2px); /* Adjust the height as needed */
+  padding: 0.25rem 0.5rem; /* Adjust the padding as needed */
+  font-size: 0.875rem; /* Adjust the font size as needed */
+}
+
+.small-nav-size .btn {
+  font-size: 0.875rem; /* Adjust the font size as needed */
+  padding: 0.25rem 0.5rem; /* Adjust the padding as needed */
+}
+
+.small-nav-size .dropdown-toggle {
+  font-size: 0.875rem; /* Adjust the font size as needed */
+  padding: 0.25rem 0.5rem; /* Adjust the padding as needed */
+}

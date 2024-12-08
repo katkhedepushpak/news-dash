@@ -3,14 +3,16 @@ import Navbar from './components/Navbar';
 import News from './components/News';
 import './components/css/News.css';
 
-
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      isDarkMode: false
+      isDarkMode: false,
+      selectedCountry: 'us' // Default country
     };
   }
+
+  apiKey = '7e41a51979ee4cd49e141ac9ee174eab';
 
   toggleDarkMode = () => {
     this.setState({ isDarkMode: !this.state.isDarkMode }, () => {
@@ -22,11 +24,19 @@ class App extends Component {
     });
   };
 
+  handleCountryChange = (countryCode) => {
+    this.setState({ selectedCountry: countryCode });
+  };
+
   render() {
     return (
-      <div className={this.state.isDarkMode ? 'dark-mode' : ''}>
-        <Navbar toggleDarkMode={this.toggleDarkMode} isDarkMode={this.state.isDarkMode} />
-        <News />
+      <div>
+        <Navbar
+          toggleDarkMode={this.toggleDarkMode}
+          isDarkMode={this.state.isDarkMode}
+          onCountryChange={this.handleCountryChange}
+        />
+        <News apiKey={this.apiKey} country={this.state.selectedCountry} />
       </div>
     );
   }
