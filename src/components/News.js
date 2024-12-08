@@ -1,33 +1,38 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import NewsItem from './NewsItem';
+import Spinner from './Spinner'; // Ensure the path is correct
 
 export class News extends Component {
   constructor(props) {
     super(props);
     this.state = {
       articles: [],
-      loading: true,
+      loading: false,
       page: 1,
-      totalResults: 0
+      totalResults: 0,
+      country: this.props.country
     };
   }
 
   async componentDidMount() {
     this.fetchArticles();
   }
-
   fetchArticles = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=ef17c17f1cba477e86f5a3c446f47742&page=${this.state.page}&pageSize=12`;
+    console.log("apiKey", this.props.apiKey); 
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=12`;
+    this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
+    console.log(parsedData);
 
     this.setState({
       articles: parsedData.articles,
-      totalResults: parsedData.totalResults
+      totalResults: parsedData.totalResults,
+      loading: false
     });
 
-    window.scrollTo(0, 0); // Scroll to top
+    window.scrollTo(0, 0); 
   };
 
   handlePrevClick = async () => {
@@ -49,15 +54,21 @@ export class News extends Component {
   };
 
   render() {
+    
     const { page, totalResults } = this.state;
     const totalPages = Math.ceil(totalResults / 12);
 
     return (
       <>
       <div className="container my-3">
-        <h2>News Dash Top Headlines</h2>
+        <div className="text-center">
+
+        <h2 classname="text-center">News Dash Top Headlines</h2>
+        </div>
+
+        {this.state.loading && <Spinner></Spinner>}
         <div className="row my-3">
-          {this.state.articles.map((article, index) => (
+          {!this.state.loading && this.state.articles.map((article, index) => (
             console.log(index),
             <div className="col-12 col-md-6 col-lg-4 my-3" key={index}>
               <NewsItem
