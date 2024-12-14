@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import NewsItem from './NewsItem';
-import Spinner from './Spinner'; // Ensure the path is correct
+import Spinner from './Spinner';
 
 export class News extends Component {
   constructor(props) {
@@ -15,16 +15,31 @@ export class News extends Component {
     };
   }
 
+  static defaultProps = {
+    category: "general",
+  };
+
+  static propTypes = {
+    country: PropTypes.string,
+    category: PropTypes.string,
+  };
+
   async componentDidMount() {
     this.fetchArticles();
   }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.country !== this.props.country || prevProps.category !== this.props.category) {
+      this.fetchArticles();
+    }
+  }
+
   fetchArticles = async () => {
-    console.log("apiKey", this.props.apiKey); 
-    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=12`;
+    const { apiKey, country, category } = this.props;
+    let url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}&page=${this.state.page}&pageSize=12`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
-    console.log(parsedData);
 
     this.setState({
       articles: parsedData.articles,
@@ -54,16 +69,19 @@ export class News extends Component {
   };
 
   render() {
+
+
     
     const { page, totalResults } = this.state;
     const totalPages = Math.ceil(totalResults / 12);
 
     return (
       <>
+
       <div className="container my-3">
         <div className="text-center">
 
-        <h2 classname="text-center">News Dash Top Headlines</h2>
+        <h2 className="text-center">News Dash Top Headlines</h2>
         </div>
 
         {this.state.loading && <Spinner></Spinner>}
@@ -90,8 +108,8 @@ export class News extends Component {
 
         
       </div>
-      <footer class="bg-dark text-white text-center py-3 mt-4">
-          <div class="container">
+      <footer className="bg-dark text-white text-center py-3 mt-4">
+          <div className="container">
             <p>&copy; 2024 News Dash Company. This is a learning project.</p>
           </div>
       </footer>

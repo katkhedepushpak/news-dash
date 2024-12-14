@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
 .navbar {
-  font-family: 'Bitter', sans-serif;
-  font-size: 30px;
+  font-family: 'Josefin-sans', sans-serif;
+  font-size: 15px;
 }
 
 .small-nav-size {
@@ -23,4 +24,89 @@
 .small-nav-size .dropdown-toggle {
   font-size: 0.875rem; /* Adjust the font size as needed */
   padding: 0.25rem 0.5rem; /* Adjust the padding as needed */
+  background-color: white; /* Set the background color to white */
+  color: black; /* Set the text color to black for contrast */
+}
+
+.small-nav-size .dropdown-toggle:focus,
+.small-nav-size .dropdown-toggle:hover {
+  color: black; /* Ensure the text color stays black when accessed */
+}
+
+.dropdown-menu {
+  max-height: 200px;
+  overflow-y: auto;
+  color: white; /* Set the text color to white */
+}
+
+.dropdown-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: grey;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 10px;
+  border: 2px solid grey;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark .news-item-card {
+  background-color: #2f4f4f; /* Steel color */
+  color: #ffffff; /* White text */
+}
+
+body.dark .news-item-card .read-more-btn {
+  background-color: #d3d3d3; /* Light grey background */
+  color: #000000; /* Black text */
+}
+
+body.dark .navbar-dark .dropdown-item {
+  color: #000000; /* Dark grey text */
+}
+
+body.dark .navbar-dark .dropdown-toggle {
+  color: #000000; /* Dark grey text */
+}
+
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.logo-light {
+  filter: invert(1);
+}
+
+.navbar-dark .navbar-brand, .navbar-dark .nav-link, .navbar-dark .dropdown-item {
+  color: #ffffff;
+}
+
+.navbar-light {
+  background-color: #f8f9fa; /* Set the navbar color to grey */
+}
+
+.navbar-light .navbar-brand, .navbar-light .nav-link, .navbar-light .dropdown-item {
+  color: #000000;
+}
+
+.form-check-input:checked {
+  background-color: #28a745; /* Change the color to green */
+  border-color: #28a745; /* Change the border color to green */
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25); /* Change the focus shadow color */
+}
+
+.nav-separator {
+  margin: 0 10px;
+  color: #ccc; /* Adjust the color as needed */
 }
