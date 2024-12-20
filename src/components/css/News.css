@@ -19,3 +19,11 @@ body {
   width: 75%; /* Adjust the width as needed */
   margin: 0 auto; /* Center the container */
 }
+
+.news-item-card {
+  transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+.news-item-card:hover {
+  transform: scale(1.05); /* Slightly increase the size of the card on hover */
+}
