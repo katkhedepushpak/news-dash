@@ -22,24 +22,25 @@ News Dash is a React application that displays top headlines from various catego
    ```bash
    git clone https://github.com/your-username/news-dash.git
    cd news-dash
-```
+    ```
+
 2. Install Dependenices
    ```bash
    npm install
-```
+    ```
 
 3. Run the project
    ```bash
    npm run start
-```
+    ```
 
 4. Build the app for production:
    ```bash
-  npm run build
-```
+    npm run build
+    ```
 
 5. Serve the production build locally (optional):
    ```bash
-  npm install -g serve
-serve -s build
-```
+    npm install -g serve
+    serve -s build
+    ```
