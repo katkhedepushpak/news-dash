@@ -20,7 +20,7 @@ News Dash is a React application that displays top headlines from various catego
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/news-dash.git
+   git clone https://github.com/katkhedepushpak/news-dash.git
    cd news-dash
     ```
 
